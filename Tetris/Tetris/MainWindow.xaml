@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Label FontSize="40" Content="&lt;TETRIS&gt;" HorizontalAlignment="Center" Margin="0,66,0,0" VerticalAlignment="Top" Height="81" Width="193"/>
+        <Button Content="Start Game" HorizontalAlignment="Center" Margin="0,152,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Options" HorizontalAlignment="Center" Margin="348,182,347,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Quit" HorizontalAlignment="Center" Margin="348,212,347,0" VerticalAlignment="Top" Width="100" Height="25"/>
+
     </Grid>
 </Window>

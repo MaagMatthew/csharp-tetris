@@ -10,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Tetris
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Options.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Options : Window
     {
-        public MainWindow()
+        public Options()
         {
             InitializeComponent();
-            Style = (Style)FindResource(typeof(Window));
         }
     }
 }
