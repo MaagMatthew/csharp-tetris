@@ -14,3 +14,5 @@ C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Tetris.csproj
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Tetris.exe
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Tetris.pdb
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\App.baml
+C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Options.g.cs
+C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Options.baml
