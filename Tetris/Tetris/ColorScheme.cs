@@ -8,6 +8,7 @@ namespace Tetris
 {
     class ColorScheme
     {
+        public static Dictionary<string, ColorScheme> schemes = new Dictionary<string, ColorScheme>();
         public string Name { get; set; }
         public string Color1 { get; set; }
         public string Color2 { get; set; }

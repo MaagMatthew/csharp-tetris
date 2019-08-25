@@ -20,3 +20,5 @@ C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\GameWindow.g.
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\GameWindow.baml
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Tetris_Content.g.cs
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\bin\Debug\Music\Tetris_-_Theme_A_by_Gori_Fater.mp3
+C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Difficulty.g.cs
+C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Difficulty.baml

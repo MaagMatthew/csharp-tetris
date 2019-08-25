@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Tetris
 {
@@ -23,16 +24,34 @@ namespace Tetris
         {
             InitializeComponent();
             Style = (Style)FindResource(typeof(Window));
-            List<ColorScheme> colorSchemes = new List<ColorScheme>();
-            //colorSchemes.Add(new ColorScheme() { Name = "Ocean Breeze", Color1 = "#B3473B", Color2 = "#E8FF87", Color3 = "#FF7D6E", Color4 = "#437FCC", Color5 = "#4474B3", Color6 = "#DE5849", Color7 = "#1C1F10", DarkText = true });
-            //colorSchemes.Add(new ColorScheme() { Name = "GreyScale", Color1 = "#000000", Color2 = "#181818", Color3 = "#282828", Color4 = "#404040", Color5 = "#505050", Color6 = "#666666", Color7 = "#808080", DarkText = false });
-            colorCombo.Items.Add("Ocean Breeze");
-            colorCombo.Items.Add("Grey Scale");
+            colorCombo.ItemsSource = ColorScheme.schemes.Keys;
+            string[] lines = new string[2];
+            try
+            {
+                lines = File.ReadAllLines("settings.set");
+                colorCombo.SelectedItem = lines[0];
+                Mute.IsChecked = lines[1].ToLower() == "true" ? true : false;
+            }
+            catch (FileNotFoundException)
+            {
+                using (StreamWriter file = new StreamWriter("settings.set"))
+                {
+                    string scheme = ColorScheme.schemes.Keys.ToList()[0];
+                    bool mute = false;
+                    file.Write(scheme + "\n" + mute);
+                    lines[0] = scheme;
+                    lines[1] = "" + mute;
+                }
+            }
 
         }
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
+            using(StreamWriter file = new StreamWriter("settings.set"))
+            {
+                file.Write(colorCombo.SelectedItem + "\n" + Mute.IsChecked);
+            }
             MainWindow win = new MainWindow();
             win.Show();
             this.Close();

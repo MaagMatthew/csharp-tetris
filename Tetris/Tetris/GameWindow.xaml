@@ -15,7 +15,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="252,89,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextAlignment="Right" FontSize="16"/>
         <Label Content="Score:" HorizontalAlignment="Left" Margin="137,116,0,0" VerticalAlignment="Top" Width="65" FontSize="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="252,121,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextAlignment="Right" FontSize="16"/>
-        <Image x:Name="exit" HorizontalAlignment="Left" Height="42" Margin="10,553,0,0" VerticalAlignment="Top" Width="42" Source="Images/exit.gif"/>
+        <Image x:Name="exit" HorizontalAlignment="Left" Height="42" Margin="10,553,0,0" VerticalAlignment="Top" Width="42" Source="Images/exit.gif" MouseDown="Exit_MouseDown"/>
         <Image x:Name="NextImage" HorizontalAlignment="Left" Height="100" Margin="300,71,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Next Block:" HorizontalAlignment="Left" Margin="300,40,0,0" VerticalAlignment="Top"/>
 

@@ -12,8 +12,7 @@
         <ComboBox HorizontalAlignment="Left" Margin="373,114,0,0" VerticalAlignment="Top" Width="120" Name="colorCombo"/>
         <Label Content="Mute Music " HorizontalAlignment="Left" Margin="291,155,0,0" VerticalAlignment="Top"/>
         <CheckBox Content="" HorizontalAlignment="Left" Margin="372,166,0,0" VerticalAlignment="Top" Name="Mute"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="303,218,0,0" VerticalAlignment="Top" Width="76"/>
-        <Button Content="Menu" HorizontalAlignment="Left" Margin="419,218,0,0" VerticalAlignment="Top" Width="74" Click="Menu_Click"/>
+        <Button Content="Menu" HorizontalAlignment="Center" Margin="0,221,0,0" VerticalAlignment="Top" Width="74" Click="Menu_Click"/>
 
     </Grid>
 </Window>

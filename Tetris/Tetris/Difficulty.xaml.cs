@@ -22,6 +22,7 @@ namespace Tetris
         public Difficulty()
         {
             InitializeComponent();
+            Style = (Style)FindResource(typeof(Window));
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
