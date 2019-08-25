@@ -20,12 +20,9 @@ namespace Tetris
     /// </summary>
     public partial class MainWindow : Window
     {
-        MediaPlayer mediaPlayer = new MediaPlayer();
         public MainWindow()
         {
             InitializeComponent();
-            mediaPlayer.Open(new Uri(".mp3"));
-            mediaPlayer.Play();
         }
         private void Options_Click(object sender, RoutedEventArgs e)
         {
@@ -39,9 +36,10 @@ namespace Tetris
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Start_Game(object sender, RoutedEventArgs e)
         {
 
         }
+
     }
 }

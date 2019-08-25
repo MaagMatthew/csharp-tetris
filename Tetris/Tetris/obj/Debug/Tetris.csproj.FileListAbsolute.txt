@@ -16,3 +16,7 @@ C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Tetris.pdb
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\App.baml
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Options.g.cs
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Options.baml
+C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\GameWindow.g.cs
+C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\GameWindow.baml
+C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Tetris_Content.g.cs
+C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\bin\Debug\Music\Tetris_-_Theme_A_by_Gori_Fater.mp3
