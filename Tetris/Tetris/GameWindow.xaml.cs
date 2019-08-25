@@ -19,6 +19,8 @@ namespace Tetris
     /// </summary>
     public partial class GameWindow : Window
     {
+        public static Mode mode = Mode.EASY;
+
         public GameWindow()
         {
             MediaPlayer mediaPlayer = new MediaPlayer();
@@ -26,6 +28,13 @@ namespace Tetris
             mediaPlayer.Open(new Uri("../../Music/Tetris_-_Theme_A_by_Gori_Fater.mp3", UriKind.Relative));
             mediaPlayer.Volume = 100;
             mediaPlayer.Play();
+        }
+
+        private void Exit_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

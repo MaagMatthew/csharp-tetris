@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Difficulty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -68,6 +72,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ColorScheme.cs" />
+    <Compile Include="Difficulty.xaml.cs">
+      <DependentUpon>Difficulty.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
@@ -81,6 +88,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mode.cs" />
     <Compile Include="Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>

@@ -38,7 +38,9 @@ namespace Tetris
 
         private void Start_Game(object sender, RoutedEventArgs e)
         {
-
+            Difficulty win3 = new Difficulty();
+            win3.Show();
+            this.Close();
         }
 
     }
