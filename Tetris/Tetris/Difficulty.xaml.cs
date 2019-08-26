@@ -35,6 +35,7 @@ namespace Tetris
         private void Easy_Click(object sender, RoutedEventArgs e)
         {
             GameWindow.mode = Mode.EASY;
+            GameWindow.gravityMod = 1.05;
             Start_Game();
         }
 
@@ -42,6 +43,7 @@ namespace Tetris
         {
 
             GameWindow.mode = Mode.MEDIUM;
+            GameWindow.gravityMod = 1.1;
             Start_Game();
         }
 
@@ -49,6 +51,7 @@ namespace Tetris
         {
 
             GameWindow.mode = Mode.HARD;
+            GameWindow.gravityMod = 1.2;
             Start_Game();
         }
 
@@ -56,6 +59,7 @@ namespace Tetris
         {
 
             GameWindow.mode = Mode.NIGHTMARE;
+            GameWindow.gravityMod = 1.666;
             Start_Game();
         }
 

@@ -22,6 +22,8 @@ namespace Tetris
     {
         public static Mode mode = Mode.EASY;
         readonly MediaPlayer mediaPlayer = new MediaPlayer();
+        public static double gravityMod = 0;
+
 
         public GameWindow()
         {
