@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\maagm\Documents\csharp-tetris\Tetris\Tetris\App.xaml
-5427542854
+61808054623
 1-655708515
-13-1556379567
+14-332424690
 13-1505183044
-Difficulty.xaml;GameWindow.xaml;LeaderboardWindow.xaml;MainWindow.xaml;Options.xaml;
+Difficulty.xaml;GameOverWindow.xaml;GameWindow.xaml;LeaderboardWindow.xaml;MainWindow.xaml;Options.xaml;
 
 True
 

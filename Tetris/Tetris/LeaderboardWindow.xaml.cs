@@ -26,7 +26,9 @@ namespace Tetris
 
         private void Back_Button(object sender, RoutedEventArgs e)
         {
-
+            GameOverWindow gameOver = new GameOverWindow();
+            gameOver.Show();
+            this.Close();
         }
     }
 }
