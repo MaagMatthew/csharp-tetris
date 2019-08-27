@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Release\
+C:\Users\Lopac\Source\Repos\javascript-tetris\Tetris\Tetris\obj\Release\
 Tetris
 none
 false
 TRACE
-C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\App.xaml
-2-32274378
-
-71070957945
+C:\Users\Lopac\Source\Repos\javascript-tetris\Tetris\Tetris\App.xaml
+4-175098347
+1-655708515
+111406345352
 13-1505183044
-MainWindow.xaml;Options.xaml;
+Difficulty.xaml;GameWindow.xaml;MainWindow.xaml;Options.xaml;
 
 True
 
