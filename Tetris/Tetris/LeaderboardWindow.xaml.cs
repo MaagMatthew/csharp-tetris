@@ -21,6 +21,7 @@ namespace Tetris
     {
         public LeaderboardWindow()
         {
+            Resources["scores"] = Leaderboard.LeaderStored;
             InitializeComponent();
         }
 

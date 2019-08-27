@@ -7,7 +7,16 @@
         mc:Ignorable="d"
         Title="LeaderboardWindow" Height="345.349" Width="351.231">
     <Grid>
-        <DataGrid x:Name="leaderboardGrid" HorizontalAlignment="Left" Height="259" Margin="10,10,0,0" VerticalAlignment="Top" Width="326"/>
+        <ListBox ItemsSource="{DynamicResource scores}"  x:Name="leaderboardGrid" HorizontalAlignment="Left" Height="259" Margin="10,10,0,0" VerticalAlignment="Top" Width="326">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="5" Text="{Binding Key}" />
+                        <TextBlock Text="{Binding Value}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,274,0,0" VerticalAlignment="Top" Width="75" Click="Back_Button"/>
 
     </Grid>
