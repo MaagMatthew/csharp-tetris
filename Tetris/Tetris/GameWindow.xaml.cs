@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using Tetris.Game;
 
 namespace Tetris
 {
@@ -20,10 +21,12 @@ namespace Tetris
     /// </summary>
     public partial class GameWindow : Window
     {
-        public static Mode mode = Mode.EASY;
-        readonly MediaPlayer mediaPlayer = new MediaPlayer();
-        public static double gravityMod = 0;
+        public static Mode mode { get => game.GameMode; set => game.GameMode = value; }
+        public static double gravityMod { get => game.GravityMod; set => game.GravityMod = value; }
 
+        public static TetrisGame game { get; set; } = new TetrisGame();
+
+        readonly MediaPlayer mediaPlayer = new MediaPlayer();
 
         public GameWindow()
         {
@@ -60,6 +63,38 @@ namespace Tetris
                 mediaPlayer.Play();
 
             }
+
+            SetupGrid();
+            //addEvents(); // attach keydown and resize events
+            game.Start();
+        }
+
+        void SetupGrid()
+        {
+            GameGrid.Children.Clear();
+
+            Cell[,] gameGrid = game.Grid;
+            for(int i = 0; i < gameGrid.GetLength(0); i++)
+            {
+                for(int j = 0; j < gameGrid.GetLength(1); j++)
+                {
+                    Cell cell = gameGrid[i, j];
+
+                    Rectangle rect = new Rectangle();
+                    Binding binding = new Binding()
+                    {
+                        Path = new PropertyPath("Current"),
+                        Source = cell,
+                        Converter = new PieceToColorConverter()
+                    };
+                    rect.SetBinding(Rectangle.FillProperty, binding);
+
+                    rect.SetValue(Grid.ColumnProperty, i);
+                    rect.SetValue(Grid.RowProperty, j);
+
+                    GameGrid.Children.Add(rect);
+                }
+            }
         }
 
         void MusicEnded(Object sender, EventArgs e)
@@ -74,6 +109,25 @@ namespace Tetris
             mediaPlayer.Stop();
             mainWindow.Show();
             this.Close();
+        }
+
+        private void Grid_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Left:
+                    game.ProcessInput(TetrisGame.Action.Left);
+                    break;
+                case Key.Right:
+                    game.ProcessInput(TetrisGame.Action.Right);
+                    break;
+                case Key.Up:
+                    game.ProcessInput(TetrisGame.Action.Up);
+                    break;
+                case Key.Down:
+                    game.ProcessInput(TetrisGame.Action.Down);
+                    break;
+            }
         }
     }
 }

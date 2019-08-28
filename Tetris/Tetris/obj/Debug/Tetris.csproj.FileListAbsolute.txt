@@ -22,3 +22,27 @@ C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Tetris_Conten
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\bin\Debug\Music\Tetris_-_Theme_A_by_Gori_Fater.mp3
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Difficulty.g.cs
 C:\Users\maagm\Documents\javascript-tetris\Tetris\Tetris\obj\Debug\Difficulty.baml
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\bin\Debug\Music\Tetris_-_Theme_A_by_Gori_Fater.mp3
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\bin\Debug\Tetris.exe.config
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\bin\Debug\Tetris.exe
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\bin\Debug\Tetris.pdb
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Tetris.csprojAssemblyReference.cache
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Difficulty.g.cs
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\GameWindow.g.cs
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\MainWindow.g.cs
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Options.g.cs
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\App.g.cs
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Tetris_Content.g.cs
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.cache
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.lref
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\App.baml
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Difficulty.baml
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\GameWindow.baml
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\MainWindow.baml
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Options.baml
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Tetris.g.resources
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Tetris.Properties.Resources.resources
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Tetris.csproj.GenerateResource.cache
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Tetris.csproj.CoreCompileInputs.cache
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Tetris.exe
+C:\Visual Studio Solutions\PRO250\csharp-tetris\Tetris\Tetris\obj\Debug\Tetris.pdb
