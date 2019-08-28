@@ -21,14 +21,32 @@ namespace Tetris
                 Piece piece = (Piece)value;
                 switch (piece)
                 {
-                    case Piece.O:
-                        brush = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
+                    case Piece.I:
+                        brush = new SolidColorBrush(Color.FromRgb(0, 0, 255));
+                        break;
+                    case Piece.J:
+                        brush = new SolidColorBrush(Color.FromRgb(0, 255, 255));
+                        break;
+                    case Piece.L:
+                        brush = new SolidColorBrush(Color.FromRgb(255, 0, 255));
                         break;
                     case Piece.None:
                         brush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                         break;
+                    case Piece.O:
+                        brush = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                        break;
+                    case Piece.S:
+                        brush = new SolidColorBrush(Color.FromRgb(255, 255, 0));
+                        break;
+                    case Piece.T:
+                        brush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                        break;
+                    case Piece.Z:
+                        brush = new SolidColorBrush(Color.FromRgb(0, 255, 0));
+                        break;
                     default:
-                        brush = new SolidColorBrush(Color.FromArgb(255, 0, 255, 0));
+                        brush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                         break;
                 }
             }

@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static Tetris.Game.Cell;
 using static Tetris.Game.TetrisPiece;
 
 namespace Tetris.Game
 {
-    public class TetrisGame
+    public class TetrisGame : INotifyPropertyChanged
     {
         public enum Action
         {
@@ -20,6 +22,11 @@ namespace Tetris.Game
             Pause,
             Resume
         }
+
+        public int score = 0;
+        public int Score { get => score; set { score = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Score")); } }
+        public int rows;
+        public int Rows { get => rows; set { rows = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Rows")); } }
 
         public bool IsGameOver { get; set; }
         public bool IsPlaying { get; set; }
@@ -32,16 +39,21 @@ namespace Tetris.Game
         public Thread Timer { get; set; }
 
         private bool pieceMoved = false;
+        private bool hidden = false;
+        private static Random rand = new Random();
 
         public TetrisGame()
         {
             SetupGrid();
 
-            Timer = new Thread(Tick);
+            Timer = new Thread(GameLoop);
             Timer.Start();
         }
 
         private TetrisPiece currentPiece;
+        private Piece nextType = RandomPieceType();
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void SetupGrid(int width = 10, int height = 21)
         {
@@ -55,25 +67,32 @@ namespace Tetris.Game
             }
         }
 
-        public void Tick()
+        public void GameLoop()
         {
-            int i = 0;
+            SpawnNewPiece();
             while (true)
             {
-                if (IsPlaying)
-                {
-                    MoveCurrentPieceDown();
-                    // Do stuff
-
-                    if (currentPiece == null)
-                    {
-                        SpawnNewPiece();
-                        UpdatePiecePosition(0, 0);
-                    }
-                    pieceMoved = false;
-                }
-                Thread.Sleep((int)(1000 / GravityMod));
+                Tick();
             }
+        }
+
+        public void Tick()
+        {
+            if (IsPlaying)
+            {
+                MoveCurrentPieceDown();
+                // Do stuff
+
+                if (currentPiece == null)
+                {
+                    Score+= 10;
+                    ClearFullRows();
+
+                    SpawnNewPiece();
+                }
+                pieceMoved = false;
+            }
+            Thread.Sleep((int)(1000 / GravityMod));
         }
 
         public void Start()
@@ -94,24 +113,68 @@ namespace Tetris.Game
                     if (currentPiece != null)
                     {
                         pieceMoved = true;
-                        UpdatePiecePosition(-1, 0);
+                        UpdatePiecePositionFull(-1, 0);
                     }
                     break;
                 case Action.Right:
                     if (currentPiece != null)
                     {
                         pieceMoved = true;
-                        UpdatePiecePosition(1, 0);
+                        UpdatePiecePositionFull(1, 0);
                     }
                     break;
                 case Action.Up:
-                    if(currentPiece != null)
+                    if (currentPiece != null)
                     {
                         pieceMoved = true;
+                        HidePiece();
                         currentPiece.Rotate();
+                        UpdatePiecePosition(-1, 0);
+                        ShiftIfCollide();
+                        ShowPiece();
+                    }
+                    break;
+                case Action.Down:
+                    if (currentPiece != null)
+                    {
+                        MoveCurrentPieceDown();
                     }
                     break;
             }
+        }
+
+        private void HidePiece()
+        {
+            if (currentPiece != null && !hidden)
+            {
+                hidden = true;
+                Coordinate[] coords = currentPiece.coordinates;
+                foreach (Coordinate coord in coords)
+                {
+                    Grid[coord.X, coord.Y].Current = Cell.Piece.None;
+                }
+            }
+        }
+
+        private void ShowPiece()
+        {
+            if (currentPiece != null && hidden)
+            {
+                hidden = false;
+                Coordinate[] coords = currentPiece.coordinates;
+                foreach (Coordinate coord in coords)
+                {
+                    Grid[coord.X, coord.Y].Current = currentPiece.PieceType;
+                }
+            }
+        }
+
+        private bool UpdatePiecePositionFull(int xChange, int yChange)
+        {
+            HidePiece();
+            bool value = UpdatePiecePosition(xChange, yChange);
+            ShowPiece();
+            return value;
         }
 
         private bool UpdatePiecePosition(int xChange, int yChange)
@@ -119,10 +182,6 @@ namespace Tetris.Game
             if (currentPiece != null)
             {
                 Coordinate[] coords = currentPiece.coordinates;
-                foreach (Coordinate coord in coords)
-                {
-                    Grid[coord.X, coord.Y].Current = Cell.Piece.None;
-                }
 
                 int i;
                 bool validMove = true;
@@ -138,26 +197,35 @@ namespace Tetris.Game
                     {
                         validMove = false;
                     }
-                    // ALSO CHECK FOR COLLISION
                 }
                 //Undo the move if it's invalid
-                for(int j = i-1; !validMove && j >=0; j--)
+                for (int j = i - 1; !validMove && j >= 0; j--)
                 {
                     coords[j].X -= xChange;
                     coords[j].Y -= yChange;
                 }
 
-                foreach (Coordinate coord in coords)
-                {
-                    Grid[coord.X, coord.Y].Current = currentPiece.PieceType;
-                }
                 return validMove;
             }
             return false;
         }
+
+        private void ShiftIfCollide()
+        {
+            for (int i = 0; i < currentPiece.coordinates.Length; i++)
+            {
+                var coord = currentPiece.coordinates[i];
+                if (coord.X >= Grid.GetLength(0))
+                {
+                    UpdatePiecePosition(-1, 0);
+                    i--;
+                }
+            }
+        }
+
         private void MoveCurrentPieceDown()
         {
-            if (!UpdatePiecePosition(0, 1) && !pieceMoved)
+            if (!UpdatePiecePositionFull(0, 1) && !pieceMoved)
             {
                 currentPiece = null;
             }
@@ -165,7 +233,52 @@ namespace Tetris.Game
 
         private void SpawnNewPiece()
         {
-            currentPiece = new TetrisPiece(Cell.Piece.O);
+            currentPiece = new TetrisPiece(nextType, rand.Next(Grid.GetLength(0) - 3));
+
+            nextType = RandomPieceType();
+            UpdatePiecePosition(0, 0);
+        }
+
+        private void ClearFullRows()
+        {
+            for (int i = Grid.GetLength(1) - 1; i >= 0; i--)
+            {
+                bool rowFull = true;
+                for (int j = 0; rowFull && j < Grid.GetLength(0); j++)
+                {
+                    rowFull = Grid[j, i].Current != Piece.None;
+                }
+
+                if (rowFull)
+                {
+                    Score += 100;
+                    Rows++;
+                    ShiftAllRows(i);
+                    i++;
+                }
+            }
+        }
+
+        private void ShiftAllRows(int startY)
+        {
+            for (int i = startY; i > 0; i--)
+            {
+                for (int j = 0; j < Grid.GetLength(0); j++)
+                {
+                    Grid[j, i].Current = Grid[j, i - 1].Current;
+                }
+            }
+        }
+
+        private static Piece RandomPieceType()
+        {
+            var types = Enum.GetValues(typeof(Piece));
+            Piece type = Piece.None;
+            while (type == Piece.None)
+            {
+                type = (Piece)types.GetValue(rand.Next(types.Length));
+            }
+            return type;
         }
     }
 }

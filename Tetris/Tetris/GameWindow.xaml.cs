@@ -65,8 +65,27 @@ namespace Tetris
             }
 
             SetupGrid();
+            SetupBindings();
             //addEvents(); // attach keydown and resize events
             game.Start();
+        }
+
+        void SetupBindings()
+        {
+            Binding binding = new Binding()
+            {
+                Path = new PropertyPath("Rows"),
+                Source = game
+            };
+            TextRows.SetBinding(TextBlock.TextProperty, binding);
+
+            binding = new Binding()
+            {
+                Path = new PropertyPath("Score"),
+                Source = game
+            };
+            TextScore.SetBinding(TextBlock.TextProperty, binding);
+
         }
 
         void SetupGrid()
