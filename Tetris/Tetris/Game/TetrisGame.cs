@@ -28,7 +28,8 @@ namespace Tetris.Game
         public int rows;
         public int Rows { get => rows; set { rows = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Rows")); } }
 
-        public bool IsGameOver { get; set; }
+        public bool gameOver = false;
+        public bool IsGameOver { get => gameOver; set { gameOver = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsGameOver")); } }
         public bool IsPlaying { get; set; }
         public Mode GameMode { get; set; }
         private double gravity = 1;
@@ -73,6 +74,8 @@ namespace Tetris.Game
             while (true)
             {
                 Tick();
+
+                Thread.Sleep((int)(1000 / GravityMod));
             }
         }
 
@@ -85,14 +88,13 @@ namespace Tetris.Game
 
                 if (currentPiece == null)
                 {
-                    Score+= 10;
+                    Score += 10;
                     ClearFullRows();
 
                     SpawnNewPiece();
                 }
                 pieceMoved = false;
             }
-            Thread.Sleep((int)(1000 / GravityMod));
         }
 
         public void Start()
@@ -233,14 +235,33 @@ namespace Tetris.Game
 
         private void SpawnNewPiece()
         {
-            currentPiece = new TetrisPiece(nextType, rand.Next(Grid.GetLength(0) - 3));
+            IsGameOver = CheckForLoss();
+            if (IsGameOver)
+            {
+                IsPlaying = false;
+            }
+            else
+            {
+                currentPiece = new TetrisPiece(nextType, rand.Next(Grid.GetLength(0) - 3));
 
-            nextType = RandomPieceType();
-            UpdatePiecePosition(0, 0);
+                nextType = RandomPieceType();
+                UpdatePiecePosition(0, 0);
+            }
+        }
+
+        private bool CheckForLoss()
+        {
+            bool lost = false;
+            for (int i = 0; !lost && i < Grid.GetLength(0); i++)
+            {
+                lost = Grid[i, 0].Current != Piece.None;
+            }
+            return lost;
         }
 
         private void ClearFullRows()
         {
+            bool rowCleared = false;
             for (int i = Grid.GetLength(1) - 1; i >= 0; i--)
             {
                 bool rowFull = true;
@@ -251,11 +272,16 @@ namespace Tetris.Game
 
                 if (rowFull)
                 {
+                    rowCleared = true;
                     Score += 100;
                     Rows++;
                     ShiftAllRows(i);
                     i++;
                 }
+            }
+            if (rowCleared)
+            {
+                GravityMod *= GameWindow.gravityMod;
             }
         }
 

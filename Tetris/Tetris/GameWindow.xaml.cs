@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using Tetris.Game;
+using System.Threading;
 
 namespace Tetris
 {
@@ -22,7 +23,7 @@ namespace Tetris
     public partial class GameWindow : Window
     {
         public static Mode mode { get => game.GameMode; set => game.GameMode = value; }
-        public static double gravityMod { get => game.GravityMod; set => game.GravityMod = value; }
+        public static double gravityMod { get; set; }
 
         public static TetrisGame game { get; set; } = new TetrisGame();
 
@@ -54,7 +55,7 @@ namespace Tetris
                 mediaPlayer.Open(new Uri("../../Music/Tetris_-_Theme_A_by_Gori_Fater.mp3", UriKind.Relative));
                 mediaPlayer.Volume = 100;
                 mediaPlayer.MediaEnded += MusicEnded;
-                if(mode == Mode.NIGHTMARE)
+                if (mode == Mode.NIGHTMARE)
                 {
                     mediaPlayer.SpeedRatio = .5;
                     Background = Brushes.Black;
@@ -63,10 +64,11 @@ namespace Tetris
                 mediaPlayer.Play();
 
             }
+            game = new TetrisGame();
 
             SetupGrid();
             SetupBindings();
-            //addEvents(); // attach keydown and resize events
+
             game.Start();
         }
 
@@ -86,6 +88,18 @@ namespace Tetris
             };
             TextScore.SetBinding(TextBlock.TextProperty, binding);
 
+            //Thread thread = new Thread(GameOver);
+            //thread.Start();
+            
+        }
+
+        void GameOver()
+        {
+            while (!game.IsGameOver)
+                Thread.Sleep(1000);
+            GameOverWindow window = new GameOverWindow();
+            window.Show();
+            this.Close();
         }
 
         void SetupGrid()
@@ -93,9 +107,9 @@ namespace Tetris
             GameGrid.Children.Clear();
 
             Cell[,] gameGrid = game.Grid;
-            for(int i = 0; i < gameGrid.GetLength(0); i++)
+            for (int i = 0; i < gameGrid.GetLength(0); i++)
             {
-                for(int j = 0; j < gameGrid.GetLength(1); j++)
+                for (int j = 0; j < gameGrid.GetLength(1); j++)
                 {
                     Cell cell = gameGrid[i, j];
 
