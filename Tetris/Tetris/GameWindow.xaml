@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="GameWindow" Height="632.832" Width="800" KeyDown="Grid_KeyDown" Focusable="True">
     <Grid Margin="0,0,0,0.5" >
-        <Grid x:Name="GameGrid" HorizontalAlignment="Left" Height="585" Margin="450,10,0,0" VerticalAlignment="Top" Width="278">
+        <Border BorderBrush="Black" BorderThickness="2" Margin="480,0,10,0" Width="278" Height="585">
+        <Grid x:Name="GameGrid" HorizontalAlignment="Left" Height="585" Margin="0,0,0,0" VerticalAlignment="Top" Width="278" >
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -43,9 +44,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image Grid.RowSpan="21" Grid.ColumnSpan="10" HorizontalAlignment="Left" Height="585" VerticalAlignment="Top" Width="279" Source="Images/bdg.gif" Stretch="Fill"/>
         </Grid>
-        <Label Content="Tetris" HorizontalAlignment="Center" Margin="137,10,534,0" VerticalAlignment="Top" FontSize="48" Width="124"/>
+        </Border>
+        <Label Content="Tetris" HorizontalAlignment="Center" Margin="137,10,500,0" VerticalAlignment="Top" FontSize="48" Width="158"/>
         <Label Content="Rows: " HorizontalAlignment="Left" Margin="137,84,0,0" VerticalAlignment="Top" Width="65" FontSize="16"/>
         <TextBlock Name="TextRows" HorizontalAlignment="Left" Margin="252,89,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextAlignment="Right" FontSize="16"/>
         <Label Content="Score:" HorizontalAlignment="Left" Margin="137,116,0,0" VerticalAlignment="Top" Width="65" FontSize="16"/>

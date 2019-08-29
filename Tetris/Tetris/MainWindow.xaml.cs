@@ -28,8 +28,29 @@ namespace Tetris
             // This is where you add the color schemes
             if (ColorScheme.schemes.Count == 0)
             {
-                ColorScheme.schemes.Add("Ocean Breeze", new ColorScheme() { Name = "Ocean Breeze", Color1 = "#B3473B", Color2 = "#E8FF87", Color3 = "#FF7D6E", Color4 = "#437FCC", Color5 = "#4474B3", Color6 = "#DE5849", Color7 = "#1C1F10", DarkText = true });
-                ColorScheme.schemes.Add("Greyscale", new ColorScheme() { Name = "GreyScale", Color1 = "#000000", Color2 = "#181818", Color3 = "#282828", Color4 = "#404040", Color5 = "#505050", Color6 = "#666666", Color7 = "#808080", DarkText = false });
+                ColorScheme.schemes.Add("Ocean Breeze", new ColorScheme() {
+                    Name = "Ocean Breeze",
+                    IColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#B3473B")), 
+                    JColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#E8FF87")), 
+                    LColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF7D6E")), 
+                    OColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#437FCC")), 
+                    SColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#4474B3")), 
+                    TColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#DE5849")), 
+                    ZColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#1C1F10")), 
+                    Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#111111")),
+                    DarkText = true }
+                );
+                ColorScheme.schemes.Add("Greyscale", new ColorScheme() {
+                    Name = "GreyScale",
+                    IColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000000")),
+                    JColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#181818")),
+                    LColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#282828")),
+                    OColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#404040")),
+                    SColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#505050")),
+                    TColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#666666")),
+                    ZColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#808080")),
+                    Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFF")),
+                    DarkText = false });
             }
 
         }
