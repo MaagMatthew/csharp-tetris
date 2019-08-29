@@ -13,6 +13,8 @@ namespace Tetris
 {
     class PieceToColorConverter : IValueConverter
     {
+        public static ColorScheme scheme;
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             SolidColorBrush brush = null;
@@ -22,28 +24,28 @@ namespace Tetris
                 switch (piece)
                 {
                     case Piece.I:
-                        brush = new SolidColorBrush(Color.FromRgb(0, 0, 255));
+                        brush = scheme.IColor;
                         break;
                     case Piece.J:
-                        brush = new SolidColorBrush(Color.FromRgb(0, 255, 255));
+                        brush = scheme.JColor;
                         break;
                     case Piece.L:
-                        brush = new SolidColorBrush(Color.FromRgb(255, 0, 255));
+                        brush = scheme.LColor;
                         break;
                     case Piece.None:
-                        brush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                        brush = scheme.Background;
                         break;
                     case Piece.O:
-                        brush = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                        brush = scheme.OColor;
                         break;
                     case Piece.S:
-                        brush = new SolidColorBrush(Color.FromRgb(255, 255, 0));
+                        brush = scheme.SColor;
                         break;
                     case Piece.T:
-                        brush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                        brush = scheme.TColor;
                         break;
                     case Piece.Z:
-                        brush = new SolidColorBrush(Color.FromRgb(0, 255, 0));
+                        brush = scheme.ZColor;
                         break;
                     default:
                         brush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));

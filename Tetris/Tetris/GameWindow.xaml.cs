@@ -52,6 +52,11 @@ namespace Tetris
             }
             if (lines[1].ToLower().Contains("false"))
             {
+                using(StreamReader file = new StreamReader("settings.set"))
+                {
+                    string scheme = file.ReadLine();
+                    ColorScheme.schemes.TryGetValue(scheme, out PieceToColorConverter.scheme);
+                }
                 mediaPlayer.Open(new Uri("../../Music/Tetris_-_Theme_A_by_Gori_Fater.mp3", UriKind.Relative));
                 mediaPlayer.Volume = 100;
                 mediaPlayer.MediaEnded += MusicEnded;
